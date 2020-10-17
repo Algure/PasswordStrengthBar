@@ -74,3 +74,34 @@ Follow [this](https://medium.com/mindorks/want-to-write-your-first-android-libra
 
 ### Contributing to PasswordStrengthBar
 Fork and make your changes/improvements. All pull requests are welcome.
+
+
+
+
+
+MY PATCH:
+This patch allows the developer to specify a variable number of progressbars and automatically sets the range of colors from RED:weakest(left) to GREEN:strongest(right).
+The bars attribute would have to be set in xml; failure to specify this attribute would automatically inflate the layout with four progressbars allowing user to specify colors, maximum and minimum as before.
+
+other attributes can also be set in xml:
+name="maxProgress" format="integer"
+name="minProgress" format="integer"
+name="bars" format="integer"
+name="strength" format="integer"
+name="defColor" format="color"
+
+sample:
+
+<com.android.thenishchalraj.PasswordStrengthBar
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:id="@+id/passStrength"
+        android:background="@android:color/transparent"
+        android:layout_gravity="center"
+        app:defColor="#b3b3b3"
+###     app:bars="5"
+        app:minProgress="10"
+        app:maxProgress="400"
+        app:strength="330"/>
+Screenshot_20201005-211110
+NOTE: The variable bars functionality CAN ONLY be triggered if set from xml not programmatically. The "setStrength(int strength)" method can still be used programmatically
